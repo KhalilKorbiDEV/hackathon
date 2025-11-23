@@ -1,0 +1,10 @@
+pandas
+scikit-learn
+python-dotenv
+perplexityai
+flask
+joblib
+flask-cors
+Pillow
+requests
+textblob
