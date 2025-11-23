@@ -12,18 +12,18 @@
         }
 
         :root {
-            --primary: #3498db;
-            --success: #2ecc71;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --bg: #f8f9fa;
+            --primary: #9D2627;
+            --success: #B22E2D;
+            --danger: #9E2729;
+            --warning: #9B2728;
+            --dark: #6B1C1D;
+            --light: #F7F0E4;
+            --bg: #FAF7F0;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D2627 0%, #B22E2D 100%);
             color: var(--dark);
             min-height: 100vh;
             padding: 20px;
@@ -155,7 +155,7 @@
         }
 
         .result-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D2627 0%, #B22E2D 100%);
             color: white;
             padding: 30px;
             border-radius: 10px;
@@ -213,7 +213,7 @@
         }
 
         .metric-card {
-            background: linear-gradient(135deg, var(--primary) 0%, #5dade2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #A52426 100%);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -541,8 +541,8 @@
             probReal.textContent = data.probability_real + '%';
 
             resultBox.style.background = data.is_fake 
-                ? 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)'
-                : 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
+                ? 'linear-gradient(135deg, #B22E2D 0%, #9D2627 100%)'
+                : 'linear-gradient(135deg, #9E2729 0%, #8B1F20 100%)';
             
             resultBox.classList.add('show');
         }
@@ -593,9 +593,9 @@
             
             html += '<div class="metrics-grid">';
             html += `<div class="metric-card"><h3>Total Analyzed</h3><div class="metric-value">${data.summary.total}</div></div>`;
-            html += `<div class="metric-card" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);"><h3>Fake News</h3><div class="metric-value">${data.summary.fake}</div></div>`;
-            html += `<div class="metric-card" style="background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);"><h3>Real News</h3><div class="metric-value">${data.summary.real}</div></div>`;
-            html += `<div class="metric-card" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);"><h3>Fake %</h3><div class="metric-value">${data.summary.fake_percentage}%</div></div>`;
+            html += `<div class="metric-card" style="background: linear-gradient(135deg, #B22E2D 0%, #9D2627 100%);"><h3>Fake News</h3><div class="metric-value">${data.summary.fake}</div></div>`;
+            html += `<div class="metric-card" style="background: linear-gradient(135deg, #9E2729 0%, #8B1F20 100%);"><h3>Real News</h3><div class="metric-value">${data.summary.real}</div></div>`;
+            html += `<div class="metric-card" style="background: linear-gradient(135deg, #9B2728 0%, #851F21 100%);"><h3>Fake %</h3><div class="metric-value">${data.summary.fake_percentage}%</div></div>`;
             html += '</div>';
 
             html += '<table style="width: 100%; margin-top: 20px; border-collapse: collapse;">';
@@ -684,9 +684,9 @@
                     const m = data.metrics;
                     let html = '<div class="metrics-grid" style="margin-top: 20px;">';
                     html += `<div class="metric-card"><h3>Accuracy</h3><div class="metric-value">${(m.accuracy * 100).toFixed(2)}%</div></div>`;
-                    html += `<div class="metric-card" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);"><h3>Precision</h3><div class="metric-value">${(m.precision * 100).toFixed(2)}%</div></div>`;
-                    html += `<div class="metric-card" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);"><h3>Recall</h3><div class="metric-value">${(m.recall * 100).toFixed(2)}%</div></div>`;
-                    html += `<div class="metric-card" style="background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);"><h3>F1-Score</h3><div class="metric-value">${(m.f1 * 100).toFixed(2)}%</div></div>`;
+                    html += `<div class="metric-card" style="background: linear-gradient(135deg, #9D2627 0%, #8B1F20 100%);"><h3>Precision</h3><div class="metric-value">${(m.precision * 100).toFixed(2)}%</div></div>`;
+                    html += `<div class="metric-card" style="background: linear-gradient(135deg, #B22E2D 0%, #9E2729 100%);"><h3>Recall</h3><div class="metric-value">${(m.recall * 100).toFixed(2)}%</div></div>`;
+                    html += `<div class="metric-card" style="background: linear-gradient(135deg, #9B2728 0%, #851F21 100%);"><h3>F1-Score</h3><div class="metric-value">${(m.f1 * 100).toFixed(2)}%</div></div>`;
                     html += '</div>';
 
                     document.getElementById('metrics-display').innerHTML = html;

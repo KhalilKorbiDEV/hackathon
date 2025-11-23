@@ -22,11 +22,11 @@ class VisualizationEngine:
     def create_confusion_matrix_heatmap(self, confusion_matrix):
         """Create confusion matrix heatmap"""
         plt.figure(figsize=(8, 6))
-        sns.heatmap(confusion_matrix, annot=True, fmt='d', cmap='Blues', 
+        sns.heatmap(confusion_matrix, annot=True, fmt='d', cmap='Reds', 
                    xticklabels=['Real', 'Fake'],
                    yticklabels=['Real', 'Fake'],
                    cbar_kws={'label': 'Count'})
-        plt.title('Confusion Matrix - Fake News Detection', fontsize=14, fontweight='bold')
+        plt.title('Confusion Matrix - Fake News Detection', fontsize=14, fontweight='bold', color='#9D2627')
         plt.ylabel('Actual', fontsize=12)
         plt.xlabel('Predicted', fontsize=12)
         
@@ -43,11 +43,11 @@ class VisualizationEngine:
                         metrics.get('recall', 0),
                         metrics.get('f1', 0)]
         
-        colors = ['#2ecc71', '#3498db', '#e74c3c', '#f39c12']
+        colors = ['#9D2627', '#B22E2D', '#9E2729', '#9B2728']
         bars = ax1.bar(metric_names, metric_values, color=colors, alpha=0.8, edgecolor='black', linewidth=1.5)
         ax1.set_ylim([0, 1])
         ax1.set_ylabel('Score', fontsize=11, fontweight='bold')
-        ax1.set_title('Model Performance Metrics', fontsize=12, fontweight='bold')
+        ax1.set_title('Model Performance Metrics', fontsize=12, fontweight='bold', color='#9D2627')
         ax1.grid(axis='y', alpha=0.3)
         
         # Add value labels on bars
@@ -64,9 +64,9 @@ class VisualizationEngine:
         stats_labels = [f'Training\n{training_samples}', f'Testing\n{test_samples}']
         stats_values = [training_samples, test_samples]
         
-        bars2 = ax2.bar(stats_labels, stats_values, color=['#3498db', '#e74c3c'], alpha=0.8, edgecolor='black', linewidth=1.5)
+        bars2 = ax2.bar(stats_labels, stats_values, color=['#9D2627', '#B22E2D'], alpha=0.8, edgecolor='black', linewidth=1.5)
         ax2.set_ylabel('Sample Count', fontsize=11, fontweight='bold')
-        ax2.set_title('Dataset Distribution', fontsize=12, fontweight='bold')
+        ax2.set_title('Dataset Distribution', fontsize=12, fontweight='bold', color='#9D2627')
         ax2.grid(axis='y', alpha=0.3)
         
         for bar in bars2:
@@ -86,13 +86,13 @@ class VisualizationEngine:
         roc_auc = auc(fpr, tpr)
         
         plt.figure(figsize=(8, 6))
-        plt.plot(fpr, tpr, color='#2ecc71', lw=2, label=f'ROC Curve (AUC = {roc_auc:.3f})')
-        plt.plot([0, 1], [0, 1], color='#e74c3c', lw=2, linestyle='--', label='Random Classifier')
+        plt.plot(fpr, tpr, color='#9D2627', lw=2, label=f'ROC Curve (AUC = {roc_auc:.3f})')
+        plt.plot([0, 1], [0, 1], color='#B22E2D', lw=2, linestyle='--', label='Random Classifier')
         plt.xlim([0.0, 1.0])
         plt.ylim([0.0, 1.05])
         plt.xlabel('False Positive Rate', fontsize=11, fontweight='bold')
         plt.ylabel('True Positive Rate', fontsize=11, fontweight='bold')
-        plt.title('ROC Curve - Model Performance', fontsize=12, fontweight='bold')
+        plt.title('ROC Curve - Model Performance', fontsize=12, fontweight='bold', color='#9D2627')
         plt.legend(loc="lower right", fontsize=10)
         plt.grid(alpha=0.3)
         
@@ -104,11 +104,11 @@ class VisualizationEngine:
         real_probs = [y_proba[i][1] for i in range(len(y_true)) if y_true[i] == 0]
         
         plt.figure(figsize=(10, 6))
-        plt.hist(fake_probs, bins=30, alpha=0.6, label='Fake News', color='#e74c3c', edgecolor='black')
-        plt.hist(real_probs, bins=30, alpha=0.6, label='Real News', color='#2ecc71', edgecolor='black')
+        plt.hist(fake_probs, bins=30, alpha=0.6, label='Fake News', color='#B22E2D', edgecolor='black')
+        plt.hist(real_probs, bins=30, alpha=0.6, label='Real News', color='#9E2729', edgecolor='black')
         plt.xlabel('Confidence Score (Fake)', fontsize=11, fontweight='bold')
         plt.ylabel('Frequency', fontsize=11, fontweight='bold')
-        plt.title('Prediction Confidence Distribution', fontsize=12, fontweight='bold')
+        plt.title('Prediction Confidence Distribution', fontsize=12, fontweight='bold', color='#9D2627')
         plt.legend(fontsize=10)
         plt.grid(alpha=0.3)
         
@@ -127,11 +127,11 @@ class VisualizationEngine:
         importance = importance / importance.sum(axis=1, keepdims=True)
         
         plt.figure(figsize=(10, 8))
-        sns.heatmap(importance, annot=True, fmt='.3f', cmap='RdYlGn',
+        sns.heatmap(importance, annot=True, fmt='.3f', cmap='Oranges',
                    xticklabels=['Real News Weight', 'Fake News Weight'],
                    yticklabels=features,
                    cbar_kws={'label': 'Feature Weight'})
-        plt.title('Top Feature Importance Heatmap', fontsize=12, fontweight='bold')
+        plt.title('Top Feature Importance Heatmap', fontsize=12, fontweight='bold', color='#9D2627')
         plt.ylabel('Features', fontsize=11, fontweight='bold')
         
         return self._fig_to_base64()
@@ -143,11 +143,11 @@ class VisualizationEngine:
         accuracy = [min(max(x, 0.5), 0.99) for x in accuracy]
         
         plt.figure(figsize=(10, 6))
-        plt.plot(epochs, accuracy, marker='o', linewidth=2, markersize=8, color='#3498db', label='Training Accuracy')
-        plt.axhline(y=np.mean(accuracy), color='#e74c3c', linestyle='--', label=f'Mean: {np.mean(accuracy):.3f}')
+        plt.plot(epochs, accuracy, marker='o', linewidth=2, markersize=8, color='#9D2627', label='Training Accuracy')
+        plt.axhline(y=np.mean(accuracy), color='#B22E2D', linestyle='--', label=f'Mean: {np.mean(accuracy):.3f}')
         plt.xlabel('Epoch', fontsize=11, fontweight='bold')
         plt.ylabel('Accuracy', fontsize=11, fontweight='bold')
-        plt.title('Model Training Progress', fontsize=12, fontweight='bold')
+        plt.title('Model Training Progress', fontsize=12, fontweight='bold', color='#9D2627')
         plt.ylim([0.45, 1.0])
         plt.grid(alpha=0.3)
         plt.legend(fontsize=10)
@@ -172,15 +172,15 @@ class VisualizationEngine:
         angles += angles[:1]
         
         fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(projection='polar'))
-        ax.plot(angles, values, 'o-', linewidth=2, color='#3498db', label='Performance')
-        ax.fill(angles, values, alpha=0.25, color='#3498db')
+        ax.plot(angles, values, 'o-', linewidth=2, color='#9D2627', label='Performance')
+        ax.fill(angles, values, alpha=0.25, color='#B22E2D')
         ax.set_xticks(angles[:-1])
         ax.set_xticklabels(categories, fontsize=10)
         ax.set_ylim(0, 1)
         ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0])
         ax.set_yticklabels(['0.2', '0.4', '0.6', '0.8', '1.0'], fontsize=8)
         ax.grid(True)
-        ax.set_title('Model Performance Radar', fontsize=12, fontweight='bold', pad=20)
+        ax.set_title('Model Performance Radar', fontsize=12, fontweight='bold', pad=20, color='#9D2627')
         
         return self._fig_to_base64()
     
